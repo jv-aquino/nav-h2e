@@ -9,7 +9,7 @@ const rubik = Rubik({
 })
 
 export const metadata: Metadata = {
-  title: "monorepo base",
+  title: "Hidrogênio Naval",
   description: "Plataforma para olimpíadas científicas e reforço escolar",
 };
 

@@ -1,11 +1,11 @@
-import LandingPagesNav from "@/components/base/nav/InitialNav";
+import Navbar from "@/components/base/nav";
 import Image from "next/image";
 import Link from "next/link";
 
 function NotFound() {
   return ( 
     <div className="flex flex-col min-h-screen">
-      <LandingPagesNav isLogged={false} />
+      <Navbar />
 
       <main className="flex-1 flex flex-col gap-2 items-center justify-start text-pink-900">
         <Image
