@@ -9,12 +9,16 @@ export function returnParams(params: any) {
   };
 }
 
-export const createRequest = (body: any, path: string) => {
+export const createRequest = (
+  body: any,
+  path: string,
+  method: string = "POST"
+) => {
   const headers = new Headers();
-  headers.set('Content-Type', 'application/json');
-  
+  headers.set("Content-Type", "application/json");
+
   return new NextRequest(`http://localhost:3000/api/${path}`, {
-    method: 'POST',
+    method,
     body: JSON.stringify(body),
     headers,
   });
