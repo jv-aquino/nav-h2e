@@ -14,42 +14,45 @@ enum Role {
   SUPER_ADMIN
 }
 
+enum BlogContentType {
+  MARKDOWN
+  VIDEO
+}
+
 // modelos de exemplo abaixo (pode deletar)
-model Curso {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  descricao String
-  slug      String @unique
+model Blog {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  slug     String @unique
+  imageUrl String?
+  
+  publishedAt DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 
-  materiasRelacionadas CursoMateriaRelacionada[]
+  tags     String[]
+  archived Boolean @default(false)
+  
+  contentBlocks BlogContentBlock[]
+
+  @@index([name, slug, tags])
+  @@index([archived, publishedAt])
+  @@index([tags])
 }
 
-model CursoMateriaRelacionada {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
+model BlogContentBlock {
+  id       String      @id @default(auto()) @map("_id") @db.ObjectId
+  blogId   String
+  blog     Blog        @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  type     BlogContentType
+  order    Int         @default(0)
+  
+  markdown     String?  // For markdown content with LaTeX support
+  videoUrl     String?  // For video content
+  metadata     Json?    // Flexible metadata for different content types
+  
+  archived Boolean @default(false)
 
-  curso   Curso  @relation(fields: [cursoId], references: [id])
-  cursoId String
-
-  materia   Materia @relation(fields: [materiaId], references: [id])
-  materiaId String
-
-  @@unique([cursoId, materiaId])
-}
-
-model Materia {
-  id                 String                    @id @default(uuid()) @map("_id")
-  name               String
-  descricao          String
-  cor                String
-  slug               String                    @unique
-  cursosRelacionados CursoMateriaRelacionada[]
-}
-
-model Licao {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId // id base do mongodb, + perfomance
-  name      String
-  descricao String
-  archived  Boolean? @default(false)
+  @@unique([blogId, order])
 }
 // modelos de exemplo acima (pode deletar)
 
