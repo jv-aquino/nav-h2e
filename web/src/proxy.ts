@@ -6,7 +6,6 @@ import type { Role } from "./generated/prisma";
 // Configuration for different page types
 const ROUTE_CONFIG = {
   authRequired: [
-    "/aprender",
     "/dashboard",
     "/perfil",
     "/settings",
@@ -72,7 +71,7 @@ export async function proxy(request: NextRequest) {
   
   if (matchesAnyPattern(pathname, ROUTE_CONFIG.redirectIfAuth)) {
     if (isAuthenticated) {
-      return NextResponse.redirect(new URL("/aprender", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
     return NextResponse.next();
   }
