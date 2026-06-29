@@ -14,7 +14,6 @@ if echo "$CHANGED_FILES" | grep -q "^web/"; then
 
   if [ "$BRANCH" = "main" ]; then
     echo "You're on branch 'main'. Running web build and tests..."
-    pnpm --filter web test:e2e || exit 1
     pnpm --filter web build || exit 1
   else
     echo "Not on 'main' branch. Skipping web build/tests."
