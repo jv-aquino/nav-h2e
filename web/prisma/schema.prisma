@@ -21,16 +21,17 @@ enum BlogContentType {
 
 // modelos de exemplo abaixo (pode deletar)
 model Blog {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
-  slug     String @unique
-  imageUrl String?
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  description   String?
+  slug          String @unique
+  imageUrl      String?
   
   publishedAt DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 
-  tags     String[]
-  archived Boolean @default(false)
+  tags        String[]
+  archived    Boolean @default(false)
   
   contentBlocks BlogContentBlock[]
 

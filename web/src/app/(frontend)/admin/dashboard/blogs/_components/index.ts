@@ -1,5 +1,5 @@
-import { LessonCard } from "./LessonCard";
-import { LessonForm } from "./LessonForm";
-import { LessonFilterBar } from "./LessonFilterBar";
+import { BlogCard } from "./BlogCard";
+import { BlogForm } from "./BlogForm";
+import { BlogFilterBar } from "./BlogFilterBar";
 
-export { LessonCard, LessonForm, LessonFilterBar };
+export { BlogCard, BlogForm, BlogFilterBar };
