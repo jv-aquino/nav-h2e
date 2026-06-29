@@ -138,7 +138,7 @@ export default function BlogsAdmPage() {
                 {(blogs || []).length === 0 && (
                   <Button onClick={() => setIsDialogOpen(true)}>
                     <Plus className="w-4 h-4 mr-2" />
-                    Criar Primeira Blog
+                    Criar Primeiro Blog
                   </Button>
                 )}
               </div>

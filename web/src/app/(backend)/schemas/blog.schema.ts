@@ -83,6 +83,7 @@ export const reorderBlogContentBlocksSchema = z.object({
 export const createBlogSchema = z.object({
   name: nameSchema,
   slug: slugSchema,
+  description: z.string().optional(),
   imageUrl: z.string().url("URL da imagem inválida").optional(),
   tags: z.array(z.string().trim().min(1)).optional(),
   publishedAt: z.coerce.date().optional(),

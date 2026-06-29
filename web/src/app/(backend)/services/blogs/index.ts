@@ -44,6 +44,7 @@ export async function createBlog(data: CreateBlogInput) {
     return await prisma.blog.create({
       data: {
         name: data.name,
+        description: data.description,
         slug: data.slug,
         imageUrl: data.imageUrl,
         tags: data.tags ?? [],
