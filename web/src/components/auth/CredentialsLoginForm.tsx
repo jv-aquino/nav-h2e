@@ -54,7 +54,7 @@ function CredentialsLoginForm({
     <form className={className ?? ''} onSubmit={handleSubmit}>
       <ValidatedInput 
         title="E-mail"
-        placeholder="exemplo@noctiluz.com.br"
+        placeholder="exemplo@exemplo.com.br"
         name="email"
         type="email"
         value={email}
